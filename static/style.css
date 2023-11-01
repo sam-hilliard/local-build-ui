@@ -1,31 +1,41 @@
 body {
   margin: 20px;
+  font-family: Gilroy;
 }
 
-head {
-  background-color: #032D42;
-}
-
-* {
-  box-sizing: border-box;
-  background-color: #032D42;
+.navbar {
+  background-color: #5274FF;  
 }
 
 img {
-  float: left;
-  width:200px; 
-  height:60px;
+  width: 200px;
+  height: 60px;
+  align-items: left;
+}
+
+.build_log {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
 }
 
 h1 {
 color: white;
 text-align: center;
+display: inline-block;
+background-color: #5274FF;
 }
 
 h2 {
-  color: white;
+  color: black;
   text-align: center;
   }
+
+form h2 {
+  color: white;
+}
+
 
 /* Create two equal columns that floats next to each other */
 .column {
@@ -36,10 +46,27 @@ h2 {
   height: 900px; /* Should be removed. Only for demonstration */
 }
 
+form {
+  color: white;
+}
+
 /* Clear floats after the columns */
 .row:after {
   background-color: #032D42;
   content: "";
   display: table;
   clear: both;
+}
+
+textarea {
+  padding: 10px;
+  max-width: 100%;
+  line-height: 1.5;
+  border-radius: 5px;
+  border: 3px solid #ccc;
+  box-shadow: 1px 1px 1px #999;
+}
+
+.checkboxes input{
+  margin: 30px;
 }
