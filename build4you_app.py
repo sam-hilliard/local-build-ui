@@ -1,6 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import os
 app = Flask(__name__)
+
+selectedRepos = []
 
 # Define the main directory name
 main_directory = "projects"
@@ -32,6 +34,12 @@ else:
 def hello():
     listOfRepos = ["item1", "item2", "item3"]
     return render_template('index.html', listOfRepos=listOfRepos)
+
+@app.route('/Tests/Post/', methods=['POST'])
+def getSelectedPlugins():
+    if request.method == 'POST':
+        selectedRepos = request.form.getlist('projects')
+        return '<h1>Success!</h1>'
 
 if __name__ == '__main__':
     app.run(debug=False)
