@@ -3,11 +3,32 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="/static/style.css" />
         <title>Build4You Application</title>
+        <img src="/static/ServiceNow_logo_WasabiGreen.png">
+        <h1>Build4You</h1>
     </head>
-    <body>
-        <h1>Build4You Landing Page</h1>
-        <p>Placeholder text</p>
-    </body>
+        <body>
+            <div class="row">
+                <div class="column">
+                    <form method="post" action="/Tests/Post/">      
+                        <fieldset>      
+                            <legend><h2>Select all projects you would like to build</h2></legend>      
+                            <input type="checkbox" name="projects" value="ae-generative-ai">ae-generative-ai<br>      
+                            <input type="checkbox" name="projects" value="agent-now">agent-now<br>      
+                            <input type="checkbox" name="projects" value="atg-data-platform">atg-data-platform<br>  
+                            <input type="checkbox" name="projects" value="app-cwf-csm-workspace-bundle">app-cwf-csm-workspace-bundle <br>      
+                            <input type="checkbox" name="projects" value="ui-builder-toolkit">ui-builder-toolkit<br>      
+                            <input type="checkbox" name="projects" value="app-itsm-gen-ai">app-itsm-gen-ai<br>      
+                            <br>      
+                            <input type="submit" value="Build" />      
+                        </fieldset>      
+                    </form>
+                </div>
+                <div class="column">
+                  <h2>Build Log</h2>
+                  <p>Placeholder text</p>
+                </div>
+           </div>
+        </body>
 </html>
