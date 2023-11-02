@@ -6,13 +6,18 @@ import subprocess
 selectedRepos = []
 
 project_scripts = {
-    "Project 1": """
+    "app-whats-new": """
     #!/bin/bash
-    echo "Hello, world!"
+    cd ~/Local-Build-UI/projects/app-whats-new/
+    mvn clean install -U
     """,
-    "Project 2": """script_for_project2""",
-    "Project 3": """script_for_project3""",
+    "polaris-app-shell": """
+    #!/bin/bash
+    cd ~/Local-Build-UI/projects/polaris-app-shell/
+    npm run build:zip"
+    """
 }
+build_results = {}
 def getProjectsList():
     # Define the main directory name
     main_directory = "projects"
@@ -62,10 +67,19 @@ def hello():
     return render_template('index.html', getProjectsList=getProjectsList)
 
 @app.route('/Tests/Post/', methods=['POST'])
-def getSelectedPlugins():
+def get_selected_projects():
     if request.method == 'POST':
         selectedRepos = request.form.getlist('projects')
-        return '<h1>Success!</h1>'
+        for project in selectedRepos:
+            build_results[project] = find_and_run(project)
+
+        response = '<h1>Results:</h1>'
+        response += '<ul>'
+        for key, value in build_results.items():
+            response += f'<li>{key}: {value}</li>'
+        response += '</ul>'
+        
+        return response
 
 if __name__ == '__main__':
     app.run(debug=False)
