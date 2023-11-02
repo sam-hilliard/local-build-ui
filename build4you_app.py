@@ -8,11 +8,13 @@ script_directory = os.path.dirname(os.path.abspath(__file__))
 selectedRepos = []
 
 project_scripts = {
-    "app-whats-new": """
+    "app-whats-new": 
+    """
     #!/bin/bash
     mvn clean install -U
     """,
-    "polaris-app-shell": """
+    "polaris-app-shell": 
+    """
     #!/bin/bash
     npm run build:zip"
     """
@@ -22,11 +24,17 @@ build_results = {}
 def cd_and_pull(project_name):
     project_directory = os.path.join(script_directory, 'projects', project_name)
     os.chdir(project_directory)
-    run_script("git pull")
+    run_script(
+               """
+               !/bin/bash
+               git pull
+               """
+    )
 
 
 def getProjectsList():
     # Define the main directory name
+    os.chdir(script_directory)
     main_directory = "projects"
 
     # Check if the main directory exists
@@ -61,7 +69,7 @@ def run_script(bash_script):
     if return_code == 0:
         return "Success"
     else:
-        return "Error: " + return_code
+        return f"Error: {return_code}"
     #standard output and standard error
     #return stdout.decode('utf-8') + stderr.decode('utf-8')
 
@@ -73,7 +81,7 @@ def find_and_run(project_name):
         return "Project not found"
 
 def copy_successful_builds(build_results):
-    script_directory = os.path.dirname(os.path.abspath(__file))
+    script_directory = os.path.dirname(os.path.abspath(__file__))
     builds_directory = os.path.join(script_directory, 'builds')
 
     # Create the "builds" directory if it doesn't exist
@@ -82,11 +90,11 @@ def copy_successful_builds(build_results):
 
     for project, status in build_results.items():
         if status == "success":
-            project_directory = os.path.join(script_directory, 'projects', project, 'target')
-            if os.path.exists(project_directory):
-                for filename in os.listdir(project_directory):
+            target_directory = os.path.join(script_directory, 'projects', project, 'target')
+            if os.path.exists(target_directory):
+                for filename in os.listdir(target_directory):
                     if filename.endswith('.zip'):
-                        source_path = os.path.join(project_directory, filename)
+                        source_path = os.path.join(target_directory, filename)
                         destination_path = os.path.join(builds_directory, filename)
                         # Copy the .zip file to the "builds" directory
                         shutil.copy(source_path, destination_path)
