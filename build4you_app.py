@@ -96,8 +96,8 @@ def copy_successful_builds(build_results):
 def hello():
     return render_template('index.html', getProjectsList=getProjectsList)
 
-@app.route('/Tests/Post/', methods=['POST'])
-def get_selected_projects():
+@app.route('/', methods=['POST'])
+def getSelectedPlugins():
     if request.method == 'POST':
         selectedRepos = request.form.getlist('projects')
         for project in selectedRepos:
