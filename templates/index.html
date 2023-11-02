@@ -15,31 +15,41 @@
                     {% endfor %}
                 </ul> -->
             <nav class="navbar">
-                <img src="/static/ServiceNow_logo_RGB_BL_WasabiGreen.png">
-                <h1>Build4You</h1>
+                <div id="logo">
+                    <img src="/static/ServiceNow_logo_RGB_BL_WasabiGreen.png">
+                </div>
+
+                <div id="navlinks">
+                    <div id="navItems">
+                       <!-- <h1 class="link">Build4You</h1> -->
+                        <p class="link">Home</p>
+                        <p class="link">About</p>
+                        <p class="link">Contact</p>
+                    </div>
+                </div>
             </nav>
-            <div class="row">
-                <div class="column">
-                    <form method="post" action="/">      
-                        <fieldset>      
-                            <legend><h2>Select all projects you would like to build</h2></legend> 
-                            <div class="checkboxes">
-                                {% for project in getProjectsList() %}
-                                <input type="checkbox" name="projects" id={{ project }} value={{ project }}>
-                                <label for={{ project }}> {{ project }}<label><br>
-                                {% endfor %}    
-                            </div>      
-                            <br>      
-                            <input type="submit" value="Build" class="build-button" />      
-                        </fieldset>      
-                    </form>
-                </div>
-                <div class="build_log">
-                  <h2>Build Log</h2>
-                  <textarea id="story" name="story" rows="30" cols="80">
-                    Placeholder text
-                    </textarea>
-                </div>
-           </div>
+
+            <div id="buildPage">
+                    <div class="column">
+                        <form method="post" action="/">
+                            <fieldset>
+                                <legend><h2>Select all projects you would like to build</h2></legend>
+                                <div class="checkboxes">
+                                    {% for project in getProjectsList() %}
+                                    <input type="checkbox" name="projects" id={{ project }} value={{ project }}>
+                                    <label for={{ project }}> {{ project }}<label><br>
+                                    {% endfor %}
+                                </div>
+                                <br>
+                                <input type="submit" value="Build" class="build-button" />
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="build_log">
+                      <textarea id="story" name="story" rows="30" cols="80">
+                        Placeholder text
+                        </textarea>
+                    </div>
+            </div>
         </body>
 </html>
