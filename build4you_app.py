@@ -10,14 +10,23 @@ selectedRepos = []
 project_scripts = {
     "app-whats-new": """
     #!/bin/bash
+<<<<<<< HEAD
+=======
+    cd ~/Local-Build-UI/projects/app-whats-new/
+>>>>>>> 195aa24 (added get_selected_projects functionality and added script map)
     mvn clean install -U
     """,
     "polaris-app-shell": """
     #!/bin/bash
+<<<<<<< HEAD
+=======
+    cd ~/Local-Build-UI/projects/polaris-app-shell/
+>>>>>>> 195aa24 (added get_selected_projects functionality and added script map)
     npm run build:zip"
     """
 }
 build_results = {}
+<<<<<<< HEAD
 
 def cd_and_pull(project_name):
     project_directory = os.path.join(script_directory, 'projects', project_name)
@@ -25,6 +34,8 @@ def cd_and_pull(project_name):
     run_script("git pull")
 
 
+=======
+>>>>>>> 195aa24 (added get_selected_projects functionality and added script map)
 def getProjectsList():
     # Define the main directory name
     main_directory = "projects"
@@ -96,15 +107,21 @@ def copy_successful_builds(build_results):
 def hello():
     return render_template('index.html', getProjectsList=getProjectsList)
 
+
 @app.route('/', methods=['POST'])
-def getSelectedPlugins():
+def get_selected_projects():
     if request.method == 'POST':
         selectedRepos = request.form.getlist('projects')
         for project in selectedRepos:
+<<<<<<< HEAD
             cd_and_pull(project)
             build_results[project] = find_and_run(project)
             copy_successful_builds(build_results)
         return render_template('index.html', build_results=build_results, getProjectsList=getProjectsList)
+=======
+            build_results[project] = find_and_run(project)
+        return render_template('index.html', build_results=build_results)
+>>>>>>> 195aa24 (added get_selected_projects functionality and added script map)
 
 if __name__ == '__main__':
     app.run(debug=False)
