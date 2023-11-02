@@ -107,8 +107,12 @@ def copy_successful_builds(build_results):
 def hello():
     return render_template('index.html', getProjectsList=getProjectsList)
 
+<<<<<<< HEAD
 
 @app.route('/', methods=['POST'])
+=======
+@app.route('/Tests/Post/', methods=['POST'])
+>>>>>>> a704113 (added get_selected_projects functionality and added script map)
 def get_selected_projects():
     if request.method == 'POST':
         selectedRepos = request.form.getlist('projects')
@@ -120,8 +124,22 @@ def get_selected_projects():
         return render_template('index.html', build_results=build_results, getProjectsList=getProjectsList)
 =======
             build_results[project] = find_and_run(project)
+<<<<<<< HEAD
         return render_template('index.html', build_results=build_results)
+<<<<<<< HEAD
 >>>>>>> 195aa24 (added get_selected_projects functionality and added script map)
+=======
+=======
+
+        response = '<h1>Results:</h1>'
+        response += '<ul>'
+        for key, value in build_results.items():
+            response += f'<li>{key}: {value}</li>'
+        response += '</ul>'
+        
+        return response
+>>>>>>> a704113 (added get_selected_projects functionality and added script map)
+>>>>>>> 8627eaa (added get_selected_projects functionality and added script map)
 
 if __name__ == '__main__':
     app.run(debug=False)
