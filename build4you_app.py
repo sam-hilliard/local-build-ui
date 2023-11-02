@@ -10,12 +10,10 @@ selectedRepos = []
 project_scripts = {
     "app-whats-new": 
     """
-    #!/bin/bash
     mvn clean install -U
     """,
     "polaris-app-shell": 
     """
-    #!/bin/bash
     npm run build:zip"
     """
 }
@@ -26,7 +24,6 @@ def cd_and_pull(project_name):
     os.chdir(project_directory)
     run_script(
                """
-               !/bin/bash
                git pull
                """
     )
@@ -76,12 +73,11 @@ def run_script(bash_script):
 def find_and_run(project_name):
     if project_name in project_scripts:
         correct_script = project_scripts[project_name]
-        return f"Script result for {project_name}: {run_script(correct_script)}"
+        return run_script(correct_script)
     else:
         return "Project not found"
 
 def copy_successful_builds(build_results):
-    script_directory = os.path.dirname(os.path.abspath(__file__))
     builds_directory = os.path.join(script_directory, 'builds')
 
     # Create the "builds" directory if it doesn't exist
@@ -89,7 +85,7 @@ def copy_successful_builds(build_results):
         os.makedirs(builds_directory)
 
     for project, status in build_results.items():
-        if status == "success":
+        if status == "Success":
             target_directory = os.path.join(script_directory, 'projects', project, 'target')
             if os.path.exists(target_directory):
                 for filename in os.listdir(target_directory):
@@ -112,6 +108,8 @@ def get_selected_projects():
         for project in selectedRepos:
             cd_and_pull(project)
             build_results[project] = find_and_run(project)
+            for key, value in build_results.items():
+                print(f"key: {key} value; {value}")
             copy_successful_builds(build_results)
         return render_template('index.html', build_results=build_results, getProjectsList=getProjectsList)
 
