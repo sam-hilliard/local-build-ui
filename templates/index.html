@@ -20,16 +20,14 @@
             </nav>
             <div class="row">
                 <div class="column">
-                    <form method="post" action="/Tests/Post/">      
+                    <form method="post" action="/">      
                         <fieldset>      
                             <legend><h2>Select all projects you would like to build</h2></legend> 
                             <div class="checkboxes">
-                                <input type="checkbox" name="projects" value="ae-generative-ai">ae-generative-ai<br>      
-                                <input type="checkbox" name="projects" value="agent-now">agent-now<br>      
-                                <input type="checkbox" name="projects" value="atg-data-platform">atg-data-platform<br>  
-                                <input type="checkbox" name="projects" value="app-cwf-csm-workspace-bundle">app-cwf-csm-workspace-bundle <br>      
-                                <input type="checkbox" name="projects" value="ui-builder-toolkit">ui-builder-toolkit<br>      
-                                <input type="checkbox" name="projects" value="app-itsm-gen-ai">app-itsm-gen-ai<br>  
+                                {% for project in getProjectsList() %}
+                                <input type="checkbox" name="projects" id={{ project }} value={{ project }}>
+                                <label for={{ project }}> {{ project }}<label><br>
+                                {% endfor %}    
                             </div>      
                             <br>      
                             <input type="submit" value="Build" />      

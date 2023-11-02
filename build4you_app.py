@@ -61,7 +61,7 @@ def find_and_run(project_name):
 def hello():
     return render_template('index.html', getProjectsList=getProjectsList)
 
-@app.route('/Tests/Post/', methods=['POST'])
+@app.route('/', methods=['POST'])
 def getSelectedPlugins():
     if request.method == 'POST':
         selectedRepos = request.form.getlist('projects')
