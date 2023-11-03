@@ -17,6 +17,13 @@ body {
   margin: 0 20px;
 }
 
+#appname h1{
+  font-family: Gilroy;
+  font-size: 28px;
+  margin-right: 800px;
+  /* align-content: center; */
+}
+
 #navlinks {
   display: flex;
   flex-direction: row;
