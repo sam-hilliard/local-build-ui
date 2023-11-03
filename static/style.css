@@ -1,7 +1,9 @@
 body {
   margin: 0;
   font-family: Gilroy;
+  color: #032D42;
 }
+
 
 .navbar {
   display: flex;
@@ -54,7 +56,8 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: black;
+  color: rgb(255, 255, 255);
+  background-color: #032D42;
 }
 
 h1 {
@@ -63,7 +66,7 @@ display: inline-block;
 }
 
 h2 {
-  color: black;
+  color: rgb(255, 255, 255);
   text-align: center;
   }
 
@@ -82,7 +85,7 @@ form h2 {
 }
 
 form {
-  color: white;
+  color: rgb(255, 255, 255);
 }
 
 /* Clear floats after the columns */
@@ -169,14 +172,13 @@ textarea {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 40px;
 }
 
 .build_log {
   width: 100%;
   display: flex;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .build_log li {
