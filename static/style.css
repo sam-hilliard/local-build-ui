@@ -171,3 +171,15 @@ textarea {
   justify-content: space-between;
   margin-top: 40px;
 }
+
+.build_log {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.build_log li {
+  list-style-type: none;
+  margin-top: 10px;
+}

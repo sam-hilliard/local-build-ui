@@ -46,9 +46,11 @@
                         </form>
                     </div>
                     <div class="build_log">
-                      <textarea id="story" name="story" rows="30" cols="80">
-                        Placeholder text
-                        </textarea>
+                      <ul>
+                        {% for key in build_results.keys() %}
+                        <li>{{ key }} : {{ build_results[key] }}</li>
+                        {% endfor %}
+                      </ul>
                     </div>
             </div>
         </body>
