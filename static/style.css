@@ -206,3 +206,11 @@ textarea {
   margin-top: 15px;
   font-size: 1.25rem;
 }
+
+.default {
+  color: red;
+}
+
+.Success {
+  color: green;
+}

@@ -60,7 +60,7 @@
                     <h2>Build Log</h2>
                       <ul>
                         {% for key in build_results.keys() %}
-                        <li>{{ key }} : {{ build_results[key] }}</li>
+                        <li class="default {{build_results[key]}}">{{ key }} : {{ build_results[key] }}</li>
                         {% endfor %}
                       </ul>
                     </div>
