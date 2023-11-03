@@ -15,6 +15,10 @@ project_scripts = {
     "polaris-app-shell": 
     """
     npm run build:zip"
+    """,
+    "glide-launcher-lite":
+    """
+    mvn clean install -U
     """
 }
 build_results = {}
@@ -98,7 +102,7 @@ def copy_successful_builds(build_results):
 
 @app.route('/')
 def hello():
-    return render_template('index.html', getProjectsList=getProjectsList)
+    return render_template('index.html', build_results={}, getProjectsList=getProjectsList)
 
 
 @app.route('/', methods=['POST'])
@@ -108,8 +112,6 @@ def get_selected_projects():
         for project in selectedRepos:
             cd_and_pull(project)
             build_results[project] = find_and_run(project)
-            for key, value in build_results.items():
-                print(f"key: {key} value; {value}")
             copy_successful_builds(build_results)
         return render_template('index.html', build_results=build_results, getProjectsList=getProjectsList)
 
