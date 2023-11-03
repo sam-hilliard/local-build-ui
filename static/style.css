@@ -9,6 +9,7 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   background-color: #fcfcfc;
   box-shadow: 5px 5px 38px -20px black;
 }
